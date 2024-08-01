@@ -1,3 +1,6 @@
-# import database import function from collect_data.py
+# tests database import function in collect_data.py
 
-# test for presence of imported file
+# TO ADD: import database import function from collect_data.py
+
+
+# TO ADD: test import function

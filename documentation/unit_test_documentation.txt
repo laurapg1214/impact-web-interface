@@ -1,0 +1,8 @@
+Using a scaled-down Test Driven Development methodology. Unit tests created before code.
+
+First Python file collect_data.py. Contains three functions: 
+1. import database
+2. prompt user input for query selection
+3. search DB and return matches
+
+Unit tests created in "test" folder for each function.

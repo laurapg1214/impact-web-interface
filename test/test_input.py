@@ -1,4 +1,7 @@
-# import input function from collect_data.py
+# tests input function from collect_data.py
 
-# test whether input is present
+# TO ADD: import input function from collect_data.py
+
+
+# TO ADD: test whether input is present
 

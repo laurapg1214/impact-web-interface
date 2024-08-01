@@ -1,7 +1,9 @@
 # imports data based on selection query
 
-# import database file (for now, set file; will determine DB selection going forward)
+# TO ADD: import database file (for now, single set file; will determine DB selection going forward)
 
-# query user for selection query
 
-# search csv file, return matches
+# TO ADD: query user for selection query
+
+
+# TO ADD: search csv file, return matches

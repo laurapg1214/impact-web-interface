@@ -1,9 +1,7 @@
-# imports data based on selection query
-
-# TO ADD: import database file (for now, single set file; will determine DB selection going forward)
-
-
-# TO ADD: query user for selection query
+from my-libraries/owb-python-library import owb-functions
+import mysql.connector 
+from mysql.connector import Error
+import pandas as pd
 
 
-# TO ADD: search csv file, return matches
+connection = create_db_server_connection("localhost", "laurapg1214", "2B0bjectDataba$3")

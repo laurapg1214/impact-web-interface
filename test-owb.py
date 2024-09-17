@@ -1,8 +1,9 @@
-import owb_module_base.owb_module.owb_dbserver as owb
+import owb_module_base.owb_module.database as db
 
 
-connection = owb.create_db_server_connection(
+connection = db.create_db_connection(
     "localhost", 
     "laurapg1214", 
-    "2B0bjectDataba$3"
+    "2B0bjectDataba$3",
+    "owb"
 )

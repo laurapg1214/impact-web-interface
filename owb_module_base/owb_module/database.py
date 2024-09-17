@@ -2,9 +2,9 @@ import mysql.connector
 from mysql.connector import Error
 import pandas as pd
 
+# functions below adapted from https://www.freecodecamp.org/news/connect-python-with-sql/
 
-# db connection function adapted from https://www.freecodecamp.org/news/connect-python-with-sql/
-# db_name optional
+# db/server connection; db_name optional
 def create_db_connection(host_name, user_name, user_password, db_name=''):
     # close existing connections
     connection = None
@@ -23,7 +23,7 @@ def create_db_connection(host_name, user_name, user_password, db_name=''):
     # if successful return MySQLConnection object
     return connection
 
-# create database function adapted from https://www.freecodecamp.org/news/connect-python-with-sql/
+# create database 
 def create_database(connection, query):
     # create cursor object
     cursor = connection.cursor()
@@ -34,7 +34,7 @@ def create_database(connection, query):
         print(f"Error: '{err}'")
 
 
-# query execution function (adapted from same as above)
+# query execution 
 def execute_query(connection, query):
     cursor = connection.cursor()
     try:

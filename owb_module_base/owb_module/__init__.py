@@ -1,18 +1,20 @@
 """
 enforce:
 
-for database.py
+for database functions:
 - mysql-connector
 - pandas
 
-for passwords.py
+for pw functions including create account & login:
+- hashlib (implements standardized cryptographic hash functions for
+securely encoding text & bytes) - using pbkdf2
 - maskpass (to mask pw as entered)
-- base64 (encrypt)
 - secrets (for token_bytes, 
 generating cryptographically-secure 16 byte (128 bit) 
 (or whatever length you want) random salt value
 secrets is designed for cryptography
-- hashlib (implements standardized cryptographic hash functions for
-securely encoding text & bytes) - using sha256
+
+for .py
+
 
 """

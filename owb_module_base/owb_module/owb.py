@@ -39,10 +39,10 @@ def create_server_connection(host_name, user_name, user_password, db_name=""):
 
 
 # query execution 
-def execute_query(connection, query):
+def execute_query(connection, query, values):
     cursor = connection.cursor()
     try:
-        cursor.execute(query)
+        cursor.execute(query, (values))
         connection.commit()
         print("Query successful")
     except Error as err:
@@ -54,9 +54,11 @@ def execute_query(connection, query):
 ##########################
 
 # adapted from https://www.askpython.com/python/examples/storing-retrieving-passwords-securely
-# create pepper for use across all hashed pws; iterations & hash_algo for db
+# adaptations: reusable functions put in package
+# iterations & hash_algo for db
 iterations = 100_000
-hash_algo = "PBKDF2"
+# hash_algo = "PBKDF2"
+hash_algo = "sha256"
 
 
 def hash_password(password):
@@ -69,7 +71,7 @@ def hash_password(password):
         salt,
         iterations
     )
-    password_hash = hash_value + salt
+    password_hash = salt + hash_value
     return password_hash
 
 
@@ -85,9 +87,37 @@ def create_account():
     return username, password_hash
 
 
-def login()
+def login(connection):
     print("\n\n***LOGIN***")
     username = input("Username: ")
     password = maskpass.askpass("Password: ")
+    
+    query = """
+    SELECT * FROM user_accounts WHERE username = %s
+    """
+    cursor = connection.cursor()
+    cursor.execute(query, (username,))
+    account = cursor.fetchone()
+
+    if not account:
+        print("Invalid username")
+        return
+    
+    key, salt, hash_algo, iterations = account[2:6]
+
+    # recompute hash from user entered password
+    password_hash = hashlib.pbkdf2_hmac(
+        hash_algo,
+        password.encode('utf-8'),
+        salt,
+        iterations
+    )
+
+    # compare hashes
+    if password_hash == key:
+        print("Login successful")
+    else:
+        print("Invalid password")
+
 
 

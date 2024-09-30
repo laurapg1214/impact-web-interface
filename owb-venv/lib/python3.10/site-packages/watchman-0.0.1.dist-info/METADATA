@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: watchman
+Version: 0.0.1
+Summary: 
+Author: Samuel Colvin
+Author-email: s@muelcolvin.com
+Requires-Python: >=3.9,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Description-Content-Type: text/markdown
+
+# watchman 
+
+Placeholder until I rename [watchgod](https://pypi.org/project/watchgod/) to use this name.
+

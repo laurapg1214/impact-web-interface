@@ -26,7 +26,7 @@ def create_server_connection():
         connection = mysql.connector.connect(
             host="localhost",
             user="owb_admin",
-            password="0bjectDataba$3",
+            password="",
             database="owb"
         )
         print("MySQL connection successful")

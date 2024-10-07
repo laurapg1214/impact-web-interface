@@ -1,0 +1,16 @@
+{% extends "obwob/layout.html" %}
+
+{% block body %}
+
+    <h2>Questions for: {{ event }}</h2>
+    {% if questions %}
+        <ul>
+        {% for question in questions %}
+            <li>{{ question }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No questions yet for this event.</p>
+    {% endif %}
+
+{% endblock %}

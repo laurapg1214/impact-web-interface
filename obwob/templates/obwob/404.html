@@ -1,0 +1,9 @@
+{% extends "obwob/layout.html" %}
+{% load static %}
+
+<!--adapted from CS50 2024 Flask lecture code samples-->
+{% block body %}
+    <h1>Error</h1>
+    <p>{{ error_message }}</p>
+    <img alt="Grumpy Cat" src="{% static 'images/grumpycat_placeholder.jpeg' %}"> 
+{% endblock %}

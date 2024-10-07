@@ -1,0 +1,16 @@
+{% extends "obwob/layout.html" %}
+
+{% block body %}
+
+    <h2>Responses to: {{ question }}</h2>
+    {% if responses %}
+        <ul>
+        {% for response in responses %}
+            <li>{{ response.text }} (from {{ response.participant }})</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No responses yet for this question.</p>
+    {% endif %}
+    
+{% endblock %}

@@ -1,6 +1,11 @@
 from django.db import models
 
 
+def get_default_event():
+    default_event = Event.objects.first()
+    return default_event.id if default_event else None
+
+
 class BaseModel(models.Model):
     # timestamp
     created_at = models.DateTimeField(auto_now_add=True)
@@ -17,7 +22,7 @@ class BaseModel(models.Model):
 
 class Event(BaseModel):
     name = models.CharField(max_length=100)
-    description = models.TextField()
+    description = models.TextField(blank=True)
     date = models.DateField()
     time = models.TimeField(blank=True, null=True)
     location = models.CharField(max_length=50, blank=True)
@@ -47,6 +52,7 @@ class Question(BaseModel):
 class Response(BaseModel):
     participant = models.ForeignKey(Participant, on_delete=models.CASCADE, related_name="responses")
     question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name="responses")
+    event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name="responses", null=True, default=get_default_event)
     text = models.TextField()
 
     def __str__(self):

@@ -22,7 +22,7 @@
         <mxCell id="9olRnuj6_J-6IgDCtsJE-8" value="Specific Event&#xa;Dashboard" style="rounded=1;arcSize=40;strokeWidth=2;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
           <mxGeometry x="513" y="430" width="125" height="48" as="geometry" />
         </mxCell>
-        <mxCell id="9olRnuj6_J-6IgDCtsJE-9" value="Responses:&#xa;view/export" style="rounded=1;arcSize=40;strokeWidth=2;fillColor=#e3c800;strokeColor=#B09500;fontColor=#000000;" vertex="1" parent="1">
+        <mxCell id="9olRnuj6_J-6IgDCtsJE-9" value="Responses:&#xa;view/export" style="rounded=1;arcSize=40;strokeWidth=2;fillColor=#6a00ff;strokeColor=#3700CC;fontColor=#ffffff;" vertex="1" parent="1">
           <mxGeometry x="830" y="280" width="125" height="48" as="geometry" />
         </mxCell>
         <mxCell id="9olRnuj6_J-6IgDCtsJE-10" value="Create event" style="rounded=1;arcSize=40;strokeWidth=2;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
@@ -37,7 +37,7 @@
         <mxCell id="9olRnuj6_J-6IgDCtsJE-13" value="Questions" style="rounded=1;arcSize=40;strokeWidth=2;fillColor=#e3c800;strokeColor=#B09500;fontColor=#000000;" vertex="1" parent="1">
           <mxGeometry x="640" y="530" width="125" height="48" as="geometry" />
         </mxCell>
-        <mxCell id="9olRnuj6_J-6IgDCtsJE-14" value="Responses" style="rounded=1;arcSize=40;strokeWidth=2;fillColor=#e3c800;strokeColor=#B09500;fontColor=#000000;" vertex="1" parent="1">
+        <mxCell id="9olRnuj6_J-6IgDCtsJE-14" value="Responses" style="rounded=1;arcSize=40;strokeWidth=2;fillColor=#6a00ff;strokeColor=#3700CC;fontColor=#ffffff;" vertex="1" parent="1">
           <mxGeometry x="640" y="610" width="125" height="48" as="geometry" />
         </mxCell>
         <mxCell id="9olRnuj6_J-6IgDCtsJE-18" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="2" target="5">

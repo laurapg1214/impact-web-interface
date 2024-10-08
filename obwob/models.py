@@ -2,6 +2,8 @@ from django.contrib.auth.models import User
 from django.db import models
 
 
+###  SETUP  ###
+
 def get_default_event():
     default_event = Event.objects.first()
     return default_event.id if default_event else None
@@ -21,23 +23,47 @@ class BaseModel(models.Model):
         abstract = True  
 
 
+###  ORGANIZATION  ###
+
+class Organization(BaseModel):
+    name = models.CharField(max_length=100)
+    location = models.CharField(max_length=100, blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.name} ({self.location})"
+    
+    
+###  PEOPLE  ###
+
 class OrganizationCoordinator(BaseModel):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    organization = models.ManyToManyField("Organization", related_name="coordinators")
+    organization = models.ForeignKey(Organization, on_delete=models.CASCADE, related_name="coordinators")
     organization_role = models.CharField(max_length=100, blank=True)
 
     def __str__(self):
         return f"{self.user.first_name} {self.user.last_name} - Coordinator of {self.organization.name}"
 
 
-class Organization(BaseModel):
-    name = models.CharField(max_length=100)
-    location = models.CharField(max_length=100, blank=True, null=True)
-    events = models.ManyToManyField("Event", related_name="organizations", blank=True)
+class Facilitator(BaseModel):
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    organization_role = models.CharField(max_length=100, blank=True)
+    organization = models.ForeignKey(Organization, on_delete=models.CASCADE,related_name="facilitators")
 
     def __str__(self):
-        return f"{self.name} ({self.location})"
+        return f"{self.first_name} {self.last_name} - Facilitator for {self.organization.name}"
+    
+    
+class Participant(BaseModel):
+    participant_identifier = models.CharField(max_length=50)  # can be text or emoji
+    first_name = models.CharField(max_length=100, blank=True)
+    last_name = models.CharField(max_length=100, blank=True)
 
+    def __str__(self):
+        return f"{self.participant_identifier} {self.first_name} {self.last_name} - Participant"
+    
+
+###  EVENTS/QUESTIONS/RESPONSES  ###
 
 class Event(BaseModel):
     name = models.CharField(max_length=100)
@@ -47,31 +73,18 @@ class Event(BaseModel):
     location = models.CharField(max_length=50, blank=True)
     # many to many class relationships 
     # placed in Event to manage data primarily from perspective of event entities
+    organizations = models.ManyToManyField("Organization", related_name="events", blank=True)
     facilitators = models.ManyToManyField("Facilitator", related_name="events", blank=True)
     participants = models.ManyToManyField("Participant", related_name="events", blank=True)
     questions = models.ManyToManyField("Question", related_name="events", blank=True)
 
     def __str__(self):
-        return self.name
-
-
-class Facilitator(BaseModel):
-    first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
-
-    def __str__(self):
-        return f"{self.first_name} {self.last_name}"
-    
-    
-class Participant(BaseModel):
-    participant_identifier = models.CharField(max_length=50)  # can be text or emoji
-
-    def __str__(self):
-        return self.participant_identifier
+        return f"{self.name}, {self.date}" 
 
 
 class Question(BaseModel):
     text = models.CharField(max_length=255)
+    organization = models.ForeignKey(Organization, on_delete=models.CASCADE, related_name="questions")
 
     def __str__(self):
         return self.text
@@ -85,6 +98,4 @@ class Response(BaseModel):
 
     def __str__(self):
         return f"Response to '{self.question.text}': {self.text}"
-
-
 

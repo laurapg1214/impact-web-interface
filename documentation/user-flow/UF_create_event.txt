@@ -1,0 +1,37 @@
+### User Flow: Create an event
+
+### Summary of User Flow
+1. User logs in or signs up.
+2. User creates an event by filling out the event form.
+
+********************************************************************************************
+
+#### Step 1: User authentication (user type: organization coordinator)
+1. **login/signup**
+   - User logs in or creates a new account 
+   - Redirect to the Home Dashboard
+
+#### Step 2: Create an event
+2. **Navigate to Create Event page**
+- User clicks "Create New Event" button on the dashboard.
+
+3. **Fill in event details**
+   - User fills out the form with the following fields:
+     - **Event name** (text input)
+     - **Event category** (dropdown list with option to add new)
+     - **Description** (textarea) - optional
+     - **Date** (date picker)
+     - **Time** (time picker) - optional
+     - **Location** (text input) - optional
+   - **Submit button**: User clicks “Create Event”.
+
+4. **Event confirmation**
+   - System saves the event and shows a confirmation message (“Event created successfully!”).
+   - Provide a link/button to proceed to add questions.
+        - Additional links: add facilitators, add participants, edit event 
+            ***See User Flow: Manage event - overview***
+
+***See User Flow: Add questions, add facilitators, add participants to event***
+
+   
+

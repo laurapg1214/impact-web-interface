@@ -1,0 +1,72 @@
+### User Flow: Add questions to an event via Event Dashboard
+
+### Summary of User Flow
+1. User logs in or signs up
+2. User navigates to an existing event's dashboard
+3. User navigates to add questions for the event.
+4. User selects existing questions or creates new ones.
+5. User finalizes and submits the questions.
+6. User is shown the event details with associated questions.
+
+********************************************************************************************
+
+#### Step 1: User authentication (user type: organization coordinator)
+1. **login/signup**
+   - User logs in or creates a new account 
+   - Redirect to the Home Dashboard
+     - Buttons: Create an event, Manage an Upcoming Event, View Past Events
+
+#### Step 3: Add questions to an event
+2. **Navigate to Select an Upcoming Event page**
+   - User clicks "Manage an Upcoming Event" button
+   - User is redirected to a page to select an existing event
+
+3. **Select an upcoming event**
+   - User selects an existing event from a dropdown list containing event names and dates
+   - User is redirected to the event dashboard
+      - Contains event details, existing questions, facilitators, participants (with edit links and remove buttons) and 
+        buttons to add new questions, facilitators, participants
+
+5. **Navigate to Add Questions page**
+   - User clicks "Add Questions to Event" button
+   - User is redirected to a page to add questions to the selected event.
+
+6. **Choose Question Method**
+   - User has two options:
+     - **Select from Existing Questions**: A checkbox list of existing questions assigned to the user's organization, with filters.
+     - **Create New Question**: A text input field to create a new question.
+
+#### Step 4: Adding Existing Questions
+7. **Select Existing Questions**
+   - If the user chooses to select from existing questions:
+     - User selects one or multiple questions from the provided list.
+   - **Confirm Selection**: User clicks a button to confirm the selection (e.g., “Add Selected Questions”).
+
+#### Step 5: Creating a New Question
+8. **Create New Question**
+   - If the user chooses to create a new question:
+     - User fills out a form with the question text.
+     - **Submit Button**: User clicks “Add Question”.
+
+9. **Confirm Addition of New Question**
+   - After creating a new question, the system saves it and shows a confirmation message ("Question added successfully!").
+   - Redirect user back to the question selection page, or give an option to add more questions.
+
+#### Step 6: Finalize Questions for the Event
+10. **Review Added Questions**
+    - User sees a list of all questions (both selected existing and newly created).
+    - Option to remove questions or add more questions if necessary.
+
+11. **Submit Questions**
+    - User clicks on “Finalize Questions”.
+    - System saves the questions linked to the event.
+
+12. **Confirmation of Questions Added**
+    - Show a confirmation message indicating the questions have been successfully added to the event ("Questions successfully added to the event.").
+
+#### Step 7: Event Dashboard
+13. **View Event Details**
+    - User is redirected to the event details page, where they can see the event information and associated questions.
+    - Option to edit event or questions, view responses, or navigate back to the Home Dashboard.
+
+

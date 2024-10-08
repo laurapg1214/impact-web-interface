@@ -1,5 +1,14 @@
 from .models import *
 from rest_framework import serializers
+import uuid
+
+
+###  ORGANIZATION  ###
+
+class OrganizationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Organization
+        fields = '__all__'
 
 
 ###  PEOPLE  ###
@@ -16,19 +25,61 @@ class FacilitatorSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class ParticipantSerializer(serializers.ModelSerializer):
+class EventParticipantSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Participant
-        fields = '__all__'
+        model = Event
+        fields = ['participants']
+
+   # add participants dynamically while event is live without modifying EventSerializer 
+    def update(self, instance, validated_data):
+        participants_data = validated_data.pop('participants', [])
+        for participant_data in participants_data:
+            # automatically assign a unique identifier if not provided
+            participant_identifier = participant_data.get('participant_identifier') or str(uuid.uuid4())
+            
+            # find or create the participant
+            participant, created = Participant.objects.get_or_create(
+                participant_identifier=participant_identifier,
+                defaults={
+                    'first_name': participant_data.get('first_name', ''),
+                    'last_name': participant_data.get('last_name', '')
+                }
+            )
+            # add participant to the event
+            instance.participants.add(participant)
+        return instance
 
 
-###  EVENTS/QUESTIONS/RESPONSES  ###
+###  QUESTIONS/EVENTS/RESPONSES  ###
 
 class EventSerializer(serializers.ModelSerializer):
+    facilitators = FacilitatorSerializer(many=True)
+    questions = QuestionSerializer(many=True)
+
     class Meta:
         model = Event
         fields = '__all__'
 
+    def create(self, validated_data):
+        # extract facilitator, participants and questions data if present
+        facilitators_data = validated_data.pop('facilitators', []) 
+        questions_data = validated_data.pop('questions', [])
+
+        # create the event object
+        event = Event.objects.create(**validated_data) 
+
+        # add facilitators to the event
+        for facilitator_data in facilitators_data:
+            facilitator, created = Facilitator.objects.get_or_create(id=facilitator_data['id']) 
+            event.facilitators.add(facilitator) 
+
+        # add questions to the event
+        for question_data in questions_data:
+            question, created = Question.objects.get_or_create(id=question_data['id']) 
+            event.questions.add(question) 
+
+        return event
+    
 
 class QuestionSerializer(serializers.ModelSerializer):
     class Meta:
@@ -42,21 +93,4 @@ class ResponseSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-###  ORGANIZATION  ###
 
-class OrganizationSerializer(serializers.ModelSerializer):
-    events = EventSerializer(many=True)
-
-
-    class Meta:
-        model = Organization
-        fields = '__all__'
-
-    
-    def create(self, validated_data):
-        events_data = validated_data.pop('events') # extract event data
-        organization = Organization.objects.create(**validated_data) # create the organization
-        for event_data in events_data:
-            event, created = Event.objects.get_or_create(**event_data) # create or get events
-            organization.events.add(event) # add events to the organization
-        return organization

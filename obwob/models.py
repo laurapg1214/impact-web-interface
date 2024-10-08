@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+import uuid
 
 
 ###  SETUP  ###
@@ -37,7 +38,7 @@ class Organization(BaseModel):
 
 class OrganizationCoordinator(BaseModel):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    organization = models.ForeignKey(Organization, on_delete=models.CASCADE, related_name="coordinators")
+    organization = models.ForeignKey(Organization, on_delete=models.CASCADE, related_name="coordinators", null=True)
     organization_role = models.CharField(max_length=100, blank=True)
 
     def __str__(self):
@@ -48,22 +49,37 @@ class Facilitator(BaseModel):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     organization_role = models.CharField(max_length=100, blank=True)
-    organization = models.ForeignKey(Organization, on_delete=models.CASCADE,related_name="facilitators")
+    organization = models.ForeignKey(Organization, on_delete=models.CASCADE, related_name="facilitators", null=True)
 
     def __str__(self):
         return f"{self.first_name} {self.last_name} - Facilitator for {self.organization.name}"
     
     
 class Participant(BaseModel):
-    participant_identifier = models.CharField(max_length=50)  # can be text or emoji
+    # optional info for participants to enter when joining an event
+    participant_identifier = models.CharField(max_length=50, unique=True, blank=True) # can be text or emoji
     first_name = models.CharField(max_length=100, blank=True)
     last_name = models.CharField(max_length=100, blank=True)
+
+    def save(self, *args, **kwargs):
+        # if identifier not provided, generate a unique identifier
+        if not self.participant_identifier:
+            self.participant_identifier = str(uuid.uuid4())
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f"{self.participant_identifier} {self.first_name} {self.last_name} - Participant"
     
 
-###  EVENTS/QUESTIONS/RESPONSES  ###
+###  QUESTIONS/EVENTS/RESPONSES  ###
+
+class Question(BaseModel):
+    text = models.CharField(max_length=255)
+    organization = models.ForeignKey(Organization, on_delete=models.CASCADE, related_name="questions", null=True)
+
+    def __str__(self):
+        return self.text
+    
 
 class Event(BaseModel):
     name = models.CharField(max_length=100)
@@ -80,14 +96,6 @@ class Event(BaseModel):
 
     def __str__(self):
         return f"{self.name}, {self.date}" 
-
-
-class Question(BaseModel):
-    text = models.CharField(max_length=255)
-    organization = models.ForeignKey(Organization, on_delete=models.CASCADE, related_name="questions")
-
-    def __str__(self):
-        return self.text
     
 
 class Response(BaseModel):
@@ -99,3 +107,11 @@ class Response(BaseModel):
     def __str__(self):
         return f"Response to '{self.question.text}': {self.text}"
 
+
+# track participants across events
+class ParticipantEvent(BaseModel):
+    participant = models.ForeignKey(Participant, on_delete=models.CASCADE, related_name='participant_events')
+    event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='event_participants')
+
+    def __str__(self):
+        return f"{self.participant} attended {self.event}"

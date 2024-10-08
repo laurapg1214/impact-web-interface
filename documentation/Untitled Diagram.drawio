@@ -16,7 +16,7 @@
         <mxCell id="7" value="Question bank" style="rounded=1;arcSize=40;strokeWidth=2" parent="1" vertex="1">
           <mxGeometry x="503" y="317" width="127" height="48" as="geometry" />
         </mxCell>
-        <mxCell id="8" value="" style="rounded=1;arcSize=40;strokeWidth=2" parent="1" vertex="1">
+        <mxCell id="8" value="People" style="rounded=1;arcSize=40;strokeWidth=2" parent="1" vertex="1">
           <mxGeometry x="730" y="317" width="129" height="48" as="geometry" />
         </mxCell>
       </root>

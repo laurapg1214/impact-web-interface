@@ -35,11 +35,11 @@ class EventParticipantSerializer(serializers.ModelSerializer):
         participants_data = validated_data.pop('participants', [])
         for participant_data in participants_data:
             # automatically assign a unique identifier if not provided
-            participant_identifier = participant_data.get('participant_identifier') or str(uuid.uuid4())
+            unique_id = participant_data.get('unique_id') or str(uuid.uuid4())
             
             # find or create the participant
             participant, created = Participant.objects.get_or_create(
-                participant_identifier=participant_identifier,
+                unique_id=unique_id,
                 defaults={
                     'first_name': participant_data.get('first_name', ''),
                     'last_name': participant_data.get('last_name', '')
@@ -51,6 +51,12 @@ class EventParticipantSerializer(serializers.ModelSerializer):
 
 
 ###  QUESTIONS/EVENTS/RESPONSES  ###
+
+class QuestionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Question
+        fields = '__all__'
+
 
 class EventSerializer(serializers.ModelSerializer):
     facilitators = FacilitatorSerializer(many=True)
@@ -79,18 +85,14 @@ class EventSerializer(serializers.ModelSerializer):
             event.questions.add(question) 
 
         return event
-    
-
-class QuestionSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Question
-        fields = '__all__'
 
 
 class ResponseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Response
         fields = '__all__'
+
+
 
 
 

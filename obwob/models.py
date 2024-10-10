@@ -5,11 +5,6 @@ import uuid
 
 ###  SETUP  ###
 
-def get_default_event():
-    default_event = Event.objects.first()
-    return default_event.id if default_event else None
-
-
 class BaseModel(models.Model):
     # timestamp
     created_at = models.DateTimeField(auto_now_add=True)
@@ -22,6 +17,11 @@ class BaseModel(models.Model):
     # make class abstract; won't create db table 
     class Meta:
         abstract = True  
+
+
+def get_default_event():
+    default_event = Event.objects.first()
+    return default_event.id if default_event else None
 
 
 ###  ORGANIZATION  ###
@@ -57,18 +57,19 @@ class Facilitator(BaseModel):
     
 class Participant(BaseModel):
     # optional info for participants to enter when joining an event
-    participant_identifier = models.CharField(max_length=50, unique=True, blank=True) # can be text or emoji
+    unique_id = models.CharField(max_length=50, unique=True, blank=True) # can be chosen by user or automatically assigned
+    emoji = models.Charfield(max_length=10, blank=True, null=True)
     first_name = models.CharField(max_length=100, blank=True)
     last_name = models.CharField(max_length=100, blank=True)
 
     def save(self, *args, **kwargs):
         # if identifier not provided, generate a unique identifier
-        if not self.participant_identifier:
-            self.participant_identifier = str(uuid.uuid4())
+        if not self.unique_id:
+            self.unique_id = str(uuid.uuid4())
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return f"{self.participant_identifier} {self.first_name} {self.last_name} - Participant"
+        return f"{self.unique_id} {self.first_name} {self.last_name} - Participant"
     
 
 ###  QUESTIONS/EVENTS/RESPONSES  ###

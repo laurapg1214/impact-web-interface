@@ -5,6 +5,7 @@ from django.conf.urls.static import static
 from django.urls import path, include
 from rest_framework import routers
 from .utils import viewsets_dict
+from .views import EventCreateView
 #from .views import custom_404_view
 
 app_name = "obwob"

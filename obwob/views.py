@@ -1,6 +1,7 @@
 from django.http import Http404, HttpResponse
 from django.shortcuts import render
-from .models import *
+from .models import Event, Question, Response
+from rest_framework import viewsets
 from .utils import get_object_or_error
 
 
@@ -40,3 +41,5 @@ def responses(request, question_id):
         "responses": Response.objects.filter(questions=question)
     }
     return get_object_or_error(request, Question, question_id, "responses.html", extra_context)
+
+

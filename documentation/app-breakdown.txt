@@ -1,0 +1,39 @@
+Coordinators App:
+- Purpose: Manage organization coordinators and their management of all event details
+- Models: Coordinator, Organization
+- Views: CoordinatorListView, CoordinatorDetailView
+***
+
+Attendees App:
+- Purpose: Handle facilitator and participant registration and management
+- Models: Participant, Facilitator.
+- Views: ParticipantListView, ParticipantDetailView, FacilitatorListView, FacilitatorDetailView.
+
+***
+Events App:
+- Purpose: Manage event creation, listing, and details.
+- Models: Event, Facilitator.
+- Views: EventCreateView, EventListView, EventDetailView.
+
+***
+Questions App:
+- Purpose: Handle question management associated with events.
+- Models: Question.
+- Views: QuestionListView, QuestionDetailView.
+
+***
+Responses App:
+- Purpose: Manage responses submitted by participants to questions.
+- Models: Response.
+- Views: ResponseListView, ResponseDetailView.
+
+***
+Authentication App:
+- Purpose: Manage user authentication and authorization.
+- Models: Custom user models or extend Django's built-in User model.
+- Views: Registration, login, logout views.
+
+**
+Reports App (if needed):
+- Purpose: Generate and display reports based on events, questions, and responses.
+- Views: Report generation views.

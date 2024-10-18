@@ -1,6 +1,7 @@
 from apps.common.models import BaseModel
+from apps.organizations.models import Organization
+from apps.questions.models import Question
 from django.db import models
-import uuid
   
 
 class Event(BaseModel):
@@ -9,12 +10,9 @@ class Event(BaseModel):
     date = models.DateField()
     time = models.TimeField(blank=True, null=True)
     location = models.CharField(max_length=50, blank=True)
-    # many to many class relationships 
-    # placed in Event to manage data primarily from perspective of event entities
-    organizations = models.ManyToManyField("Organization", related_name="events", blank=True)
-    facilitators = models.ManyToManyField("Facilitator", related_name="events", blank=True)
-    participants = models.ManyToManyField("Participant", related_name="events", blank=True)
-    questions = models.ManyToManyField("Question", related_name="events", blank=True)
+    # manytomany rels placed in Event to manage data primarily from perspective of events
+    organizations = models.ManyToManyField(Organization, related_name="events", blank=True)
+    questions = models.ManyToManyField(Question, related_name="events", blank=True)
 
     class Meta:
         verbose_name = "Event"

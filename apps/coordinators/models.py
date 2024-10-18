@@ -6,7 +6,7 @@ from django.db import models
 
 class Coordinator(BaseModel):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    organization = models.ForeignKey(Organization, on_delete=models.CASCADE, related_name="coordinators", null=True)
+    organizations = models.ManyToManyField(Organization, related_name="coordinators", blank=True)
     organization_role = models.CharField(max_length=100, default="OBWOB Coordinator")
 
     class Meta:

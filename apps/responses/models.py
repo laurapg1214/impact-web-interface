@@ -1,7 +1,7 @@
 from apps.attendees.models import Facilitator, Participant
+from apps.common.models import BaseModel, get_default_event
 from apps.events.models import Event
 from apps.questions.models import Question
-from apps.common.models import BaseModel, get_default_event
 from django.db import models
 
 

@@ -41,13 +41,16 @@ INSTALLED_APPS = [
     'apps.authentication.apps.AuthenticationConfig',
     'apps.coordinators.apps.CoordinatorsConfig',
     'apps.events.apps.EventsConfig',
+    # 'apps.demographics.apps.DemographicsConfig',
     'apps.organizations.apps.OrganizationsConfig',
     'apps.questions.apps.QuestionsConfig',
     'apps.reports.apps.ReportsConfig',
-    'apps.responses.apps.ResponsesConfig',
 
     # allow react frontend to make requests to django by configuring cors headers
     'corsheaders',
+
+    # other apps
+    'django_extensions',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -144,9 +147,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'obwob/static'),
-]
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static'),
+# ]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

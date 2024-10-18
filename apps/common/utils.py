@@ -1,5 +1,5 @@
 from apps.events.models import Event
-from apps.attendees.models import Facilitator, Participant
+from apps.attendees.models import Facilitator, Participant, EventAttendee
 from apps.questions.models import Question
 from django.apps import apps
 from django.shortcuts import render
@@ -37,120 +37,140 @@ def get_object_or_error(
 ### MODELS LIST & FUNCTIONS for API layer automation of serializers, viewsets & URL registrations
 
 MODELS_LIST = [
-    ### ORGANIZATION ###
-    'Organization',
-
-    ### PEOPLE ###
-    'Coordinator',
-    'Facilitator',
-    'Participant',
-    'EventParticipant',
-    
-    ### QUESTIONS/EVENTS/RESPONSES ###
-    'Question',
-    'Event',
-    'Response',
+    # app_label, model_name
+    ('attendees', 'Facilitator'),
+    ('attendees', 'Participant'),
+    #('attendees', 'Demographics'),
+    #('attendees', 'CustomDemographicField'),
+    #('attendees', 'CustomDemographicValue'),
+    ('organizations', 'Organization'),
+    ('coordinators', 'Coordinator'),
+    ('questions', 'Question'),
+    ('events', 'Event'),
+    ('attendees', 'EventAttendee'),
     ]
+
+
+CUSTOM_SERIALIZER_MODELS = [
+    'EventAttendee',
+    'Event',
+]
 
 
 # dynamically import models from specified app
 def get_model(app_label, model_name):
-    return apps.get_model(app_label, model_name)
+    try:
+        return apps.get_model(app_label, model_name)
+    except LookupError:
+        raise ValueError(f"Model {model_name} in app {app_label} not found.")
 
 
 ### GENERATE CUSTOM SERIALIZERS & VIEWSETS (standard serialization & viewset generation below) ###
 
-CUSTOM_SERIALIZER_MODELS = [
-    'EventParticipant',
-    'Event',
-]
-
 # function to call custom serializers generation within generate serializers & viewsets functions below
 # keep updated whenever custom serializer or viewset function added
 def use_custom_serializer(model_name, serializers_dict):
-    if model_name == 'EventParticipant':
-        return event_participant_create_serializer() 
+    if model_name == 'EventAttendee':
+        return event_attendee_create_serializer() 
     elif model_name == 'Event':
         return event_create_serializer(serializers_dict)
     
     
 def use_custom_viewset(model_name, serializers_dict):
-    if model_name == 'EventParticipant':
-        return event_participant_create_viewset()
+    if model_name == 'EventAttendee':
+        return event_attendee_create_viewset()
     elif model_name == 'Event':
         return event_create_viewset(serializers_dict)
     
 
-# custom serializer functions 
-# dynamically add participants during live event
-def event_participant_create_serializer(): 
-    class EventParticipantSerializer(serializers.ModelSerializer):
+### CUSTOM SERIALIZER FUNCTIONS ###
+
+# dynamically add attendees during live event
+def event_attendee_create_serializer(): 
+    class EventAttendeeSerializer(serializers.ModelSerializer):
         class Meta:
             model = Event
-            fields = ['participants']
+            fields = ['facilitators', 'participants']
+    
 
         def update(self, instance, validated_data):
+            facilitators_data = validated_data.pop('facilitators', [])
             participants_data = validated_data.pop('participants', [])
 
-            # create lists for both existing and new participants, for bulk adding to minimize db hits
-            participants_to_create = []
-            participants_to_add = []
+            # extract attendee model and type to avoid code duplication
+            if facilitators_data:
+                model = Participant
+                attendees_data = participants_data
+            else:
+                model = Facilitator
+                attendees_data = facilitators_data
 
-            for participant_data in participants_data:
+            # create lists for both existing and new facilitators & participants, 
+            # for bulk adding to minimize db hits
+            attendees_to_create = []
+            attendees_to_add = []
+
+            for attendee_data in attendees_data:
                 # automatically assign a unique identifier if not provided
-                unique_id = participant_data.get('unique_id') or str(uuid.uuid4())
+                unique_id = attendee_data.get('unique_id') or str(uuid.uuid4())
                 
-                # find or create the participant
-                participant, created = Participant.objects.get_or_create(
+                # find or create the facilitator/participant
+                attendee, created = model.objects.get_or_create(
                     unique_id=unique_id,
                     defaults={
-                        'first_name': participant_data.get('first_name', ''),
-                        'last_name': participant_data.get('last_name', '')
+                        'first_name': attendee_data.get('first_name', ''),
+                        'last_name': attendee_data.get('last_name', '')
                     }
                 )
                 
                 if created:
-                    participants_to_create.append(participant)
+                    attendees_to_create.append(attendee)
                 else:
-                    participants_to_add.append(participant)
+                    attendees_to_add.append(attendee)
 
-            # bulk create new participants
-            Participant.objects.bulk_create(participants_to_create)
+            # bulk create new attendees
+            model.objects.bulk_create(attendees_to_create)
 
-            # add new and existing participants to the event
-            if participants_to_create or participants_to_add:
-                instance.participants.add(*participants_to_create, *participants_to_add)
+            # add new and existing attendees to the event
+            if attendees_to_create or attendees_to_add:
+                instance.attendees.add(*attendees_to_create, *attendees_to_add)
             
             return instance
         
-    return EventParticipantSerializer
+    return EventAttendeeSerializer
     
 
 def event_create_serializer(serializers_dict):
     class EventSerializer(serializers.ModelSerializer):
-        facilitators = serializers_dict.get('Facilitator')(many=True)
-        questions = serializers_dict.get('Question')(many=True)
+        attendees = serializers_dict.get(('attendees', 'EventAttendee'))(many=True)
+        questions = serializers_dict.get(('questions', 'Question'))(many=True)
 
         class Meta:
             model = Event
             fields = '__all__'
 
         def create(self, validated_data):
-            # extract facilitator, participants and questions data if present
-            facilitators_data = validated_data.pop('facilitators', []) 
+            # extract attendees and questions data if present
+            attendees_data = validated_data.pop('attendees', []) 
             questions_data = validated_data.pop('questions', [])
 
             # create the event object
             event = Event.objects.create(**validated_data) 
 
             # prepare lists for bulk creation
-            facilitators_to_add = []
+            attendees_to_add = []
             questions_to_add = []
 
-            # add facilitators to the event
-            for facilitator_data in facilitators_data:
-                facilitator, created = Facilitator.objects.get_or_create(id=facilitator_data['id']) 
-                event.facilitators.add(facilitator) 
+            # add attendees to the event
+            for attendee_data in attendees_data:
+                # distinguish between participant and facilitator
+                attendee_type = attendee_data.get('attendee_type')
+                if attendee_type == 'participant':
+                    attendee, created = Participant.objects.get_or_create(id=attendee_data['id']) 
+                else:
+                    attendee, created = Facilitator.objects.get_or_create(id=attendee_data['id'])
+
+                event.attendees.add(attendee) 
 
             # add questions to the event
             for question_data in questions_data:
@@ -163,9 +183,9 @@ def event_create_serializer(serializers_dict):
                     
                 event.questions.add(question) 
 
-            # bulk add facilitators & questions to the event to minimize db hits
-            if facilitators_to_add:
-                event.facilitators.add(*facilitators_to_add)
+            # bulk add attendees & questions to the event to minimize db hits
+            if attendees_to_add:
+                event.attendees.add(*attendees_to_add)
 
             if questions_to_add:
                 event.questions.add(*questions_to_add)
@@ -175,13 +195,14 @@ def event_create_serializer(serializers_dict):
     return EventSerializer
 
 
-# custom viewset functions
-def event_participant_create_viewset():
-    class EventParticipantViewSet(viewsets.ModelViewSet):
-        queryset = Event.objects.all()
-        serializer_class = event_participant_create_serializer()
+### CUSTOM VIEWSET FUNCTIONS ###
 
-    return EventParticipantViewSet
+def event_attendee_create_viewset():
+    class EventAttendeeViewSet(viewsets.ModelViewSet):
+        queryset = Event.objects.all()
+        serializer_class = event_attendee_create_serializer()
+
+    return EventAttendeeViewSet
 
 
 def event_create_viewset(serializers_dict):
@@ -192,16 +213,17 @@ def event_create_viewset(serializers_dict):
     return EventViewSet
 
 
-### DYNAMICALLY GENERATE SERIALIZERS & VIEWSETS FOR EACH MODEL (EXCEPT CUSTOM) ###
+### DYNAMICALLY GENERATE SERIALIZERS ###
+
 def generate_serializers():
     serializers_dict = {}
 
-    for model_name in MODELS_LIST:
-        model = get_model(model_name)
+    for app_label, model_name in MODELS_LIST:
+        model = get_model(app_label, model_name)
         
         # check for custom serializer
         if model_name in CUSTOM_SERIALIZER_MODELS:
-            serializers_dict[model_name] = use_custom_serializer(model_name, serializers_dict)
+            serializers_dict[(app_label, model_name)] = use_custom_serializer(model_name, serializers_dict)
             continue
 
         # create Meta class dynamically
@@ -225,21 +247,17 @@ def generate_serializers():
                 'Meta': meta_class
             }
             )
-        serializers_dict[model_name] = serializer_class
+        serializers_dict[(app_label, model_name)] = serializer_class
     
     return serializers_dict
 
 
-# define serializers_dict
-serializers_dict = generate_serializers()
-
-
-# dynamically generate viewsets for each model
+### DYNAMICALLY GENERATE VIEWSETS ###
 def generate_viewsets(serializers_dict):
     viewsets_dict = {}
 
-    for model_name, serializer_class in serializers_dict.items():
-        model = get_model(model_name)
+    for (app_label, model_name), serializer_class in serializers_dict.items():
+        model = get_model(app_label, model_name)
 
         # check for custom serializer:
         if model_name in CUSTOM_SERIALIZER_MODELS:
@@ -258,7 +276,8 @@ def generate_viewsets(serializers_dict):
     return viewsets_dict
 
 
-# define viewsets_dict
+# generate serializers and viewsets
+serializers_dict = generate_serializers()
 viewsets_dict = generate_viewsets(serializers_dict)
         
 

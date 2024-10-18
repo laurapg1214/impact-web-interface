@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36" version="24.7.17">
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.17 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.17">
   <diagram name="Page-1" id="Haewlsi_iovVv61Tuty4">
-    <mxGraphModel dx="1050" dy="557" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="1036" dy="606" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -17,53 +17,53 @@
         <mxCell id="6MHDGr1IVYE9pwsXuLm0-37" value="&lt;font style=&quot;font-size: 32px;&quot;&gt;OBWOB Container Diagram&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="302" y="40" width="565" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="6MHDGr1IVYE9pwsXuLm0-29" value="&lt;font style=&quot;font-size: 22px;&quot;&gt;Database&lt;/font&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;ul&gt;&lt;li&gt;Users&lt;/li&gt;&lt;li&gt;Organizations&lt;/li&gt;&lt;li&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;Events&lt;/font&gt;&lt;/li&gt;&lt;li&gt;Facilitators&lt;/li&gt;&lt;li&gt;Participants&lt;/li&gt;&lt;li&gt;Questions&lt;/li&gt;&lt;li&gt;Responses&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;" style="shape=datastore;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
-          <mxGeometry x="620" y="750" width="140" height="210" as="geometry" />
+        <mxCell id="6MHDGr1IVYE9pwsXuLm0-29" value="&lt;font style=&quot;font-size: 22px;&quot;&gt;Database&lt;/font&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b style=&quot;background-color: initial;&quot;&gt;Models:&lt;/b&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt;Authentication&lt;/li&gt;&lt;li&gt;Coordinators&lt;/li&gt;&lt;li&gt;Demographics&lt;/li&gt;&lt;li&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;Organizations&lt;/font&gt;&lt;/li&gt;&lt;li&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;Events&lt;/font&gt;&lt;/li&gt;&lt;li&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;Reports&lt;/font&gt;&lt;/li&gt;&lt;li&gt;Questions&lt;/li&gt;&lt;li&gt;Responses&lt;/li&gt;&lt;li&gt;Facilitators&lt;/li&gt;&lt;li&gt;Participants&lt;/li&gt;&lt;li&gt;EventParticipants&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;" style="shape=datastore;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="575" y="740" width="210" height="400" as="geometry" />
         </mxCell>
-        <mxCell id="VveSuCs8Nsfqt1c0xHVb-4" value="Web Application backend" style="swimlane;startSize=23;fillColor=#1ba1e2;strokeColor=#006EAF;container=0;fontColor=#ffffff;" vertex="1" parent="1">
-          <mxGeometry x="900" y="382" width="250" height="128" as="geometry" />
+        <mxCell id="VveSuCs8Nsfqt1c0xHVb-4" value="Web App backend" style="swimlane;startSize=23;fillColor=#1ba1e2;strokeColor=#006EAF;container=0;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="900" y="351" width="250" height="260" as="geometry" />
         </mxCell>
-        <mxCell id="VveSuCs8Nsfqt1c0xHVb-6" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b style=&quot;background-color: initial;&quot;&gt;Technology: &lt;/b&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Django&amp;nbsp;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b style=&quot;background-color: initial;&quot;&gt;Responsibilities:&lt;/b&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;ul&gt;&lt;li&gt;Serve the SPA to users&lt;/li&gt;&lt;li&gt;Interact with database via&amp;nbsp; API layer&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#82b366;fillColor=#d5e8d4;container=0;" vertex="1" parent="VveSuCs8Nsfqt1c0xHVb-4">
-          <mxGeometry y="22" width="250" height="110" as="geometry" />
+        <mxCell id="VveSuCs8Nsfqt1c0xHVb-6" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b style=&quot;background-color: initial;&quot;&gt;Technology: &lt;/b&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Django&amp;nbsp;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b style=&quot;background-color: initial;&quot;&gt;Responsibilities:&lt;/b&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;ul&gt;&lt;li&gt;Serve the SPA to coordinators&lt;/li&gt;&lt;li&gt;Interact with database via&amp;nbsp; API layer&lt;/li&gt;&lt;/ul&gt;&lt;div&gt;&lt;b&gt;Models:&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;Authentication&lt;/li&gt;&lt;li&gt;Coordinators&lt;/li&gt;&lt;li&gt;Demographics (tied closely to event&lt;br&gt;&amp;amp; reports)&lt;/li&gt;&lt;li&gt;Organizations, Events, Questions,&amp;nbsp;&lt;br&gt;Reports (for backend management)&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#82b366;fillColor=#d5e8d4;container=0;" parent="VveSuCs8Nsfqt1c0xHVb-4" vertex="1">
+          <mxGeometry y="28" width="250" height="230" as="geometry" />
         </mxCell>
-        <mxCell id="VveSuCs8Nsfqt1c0xHVb-7" value="Single-Page Application" style="swimlane;startSize=23;fillColor=#60a917;strokeColor=#2D7600;container=0;fontColor=#ffffff;" vertex="1" parent="1">
+        <mxCell id="VveSuCs8Nsfqt1c0xHVb-7" value="Single-Page Application" style="swimlane;startSize=23;fillColor=#60a917;strokeColor=#2D7600;container=0;fontColor=#ffffff;" parent="1" vertex="1">
           <mxGeometry x="550" y="365.5" width="260" height="161" as="geometry" />
         </mxCell>
-        <mxCell id="VveSuCs8Nsfqt1c0xHVb-8" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b style=&quot;background-color: initial;&quot;&gt;Technology: &lt;/b&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;React&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b style=&quot;background-color: initial;&quot;&gt;Responsibilities:&lt;/b&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;All functionality for users&#39;&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;interactions&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;with app, including&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;ul&gt;&lt;li&gt;Make API requests&lt;/li&gt;&lt;li&gt;Display dynamic content from the API&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#82b366;fillColor=#d5e8d4;container=0;" vertex="1" parent="VveSuCs8Nsfqt1c0xHVb-7">
+        <mxCell id="VveSuCs8Nsfqt1c0xHVb-8" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b style=&quot;background-color: initial;&quot;&gt;Technology: &lt;/b&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;React&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b style=&quot;background-color: initial;&quot;&gt;Responsibilities:&lt;/b&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;All functionality for users&#39;&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;interactions&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;with app, including&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;ul&gt;&lt;li&gt;Make API requests&lt;/li&gt;&lt;li&gt;Display dynamic content from the API&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#82b366;fillColor=#d5e8d4;container=0;" parent="VveSuCs8Nsfqt1c0xHVb-7" vertex="1">
           <mxGeometry y="21" width="260" height="140" as="geometry" />
         </mxCell>
-        <mxCell id="VveSuCs8Nsfqt1c0xHVb-9" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="6MHDGr1IVYE9pwsXuLm0-28">
+        <mxCell id="VveSuCs8Nsfqt1c0xHVb-9" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.957;exitY=0.896;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.048;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="6MHDGr1IVYE9pwsXuLm0-28" edge="1" target="VveSuCs8Nsfqt1c0xHVb-6">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="940" y="260" as="sourcePoint" />
             <mxPoint x="980" y="380" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="VveSuCs8Nsfqt1c0xHVb-10" value="Visits obwob.com using&amp;nbsp;&lt;div&gt;[HTTPS]&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="VveSuCs8Nsfqt1c0xHVb-9">
+        <mxCell id="VveSuCs8Nsfqt1c0xHVb-10" value="Visits obwob.com using&amp;nbsp;&lt;div&gt;[HTTPS]&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="VveSuCs8Nsfqt1c0xHVb-9" vertex="1" connectable="0">
           <mxGeometry x="0.0172" y="-2" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="VveSuCs8Nsfqt1c0xHVb-11" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.008;exitY=0.395;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1.005;entryY=0.435;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="VveSuCs8Nsfqt1c0xHVb-6" target="VveSuCs8Nsfqt1c0xHVb-8">
+        <mxCell id="VveSuCs8Nsfqt1c0xHVb-11" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.008;exitY=0.395;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1.005;entryY=0.435;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="VveSuCs8Nsfqt1c0xHVb-6" target="VveSuCs8Nsfqt1c0xHVb-8" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="580" y="470" as="sourcePoint" />
             <mxPoint x="780" y="440" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="VveSuCs8Nsfqt1c0xHVb-12" value="Delivers&amp;nbsp;&lt;div&gt;to the&amp;nbsp;&lt;/div&gt;&lt;div&gt;user&#39;s web&amp;nbsp;&lt;/div&gt;&lt;div&gt;browser&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="VveSuCs8Nsfqt1c0xHVb-11">
+        <mxCell id="VveSuCs8Nsfqt1c0xHVb-12" value="Delivers&amp;nbsp;&lt;div&gt;to the&amp;nbsp;&lt;/div&gt;&lt;div&gt;user&#39;s web&amp;nbsp;&lt;/div&gt;&lt;div&gt;browser&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="VveSuCs8Nsfqt1c0xHVb-11" vertex="1" connectable="0">
           <mxGeometry x="0.1035" y="1" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="VveSuCs8Nsfqt1c0xHVb-16" value="Mobile App (Progressive Web App) user interface" style="swimlane;startSize=23;fillColor=#60a917;strokeColor=#2D7600;container=0;fontColor=#ffffff;" vertex="1" parent="1">
+        <mxCell id="VveSuCs8Nsfqt1c0xHVb-16" value="Mobile App (Progressive Web App) user interface" style="swimlane;startSize=23;fillColor=#60a917;strokeColor=#2D7600;container=0;fontColor=#ffffff;" parent="1" vertex="1">
           <mxGeometry x="220" y="358.5" width="290" height="168" as="geometry" />
         </mxCell>
-        <mxCell id="VveSuCs8Nsfqt1c0xHVb-17" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b style=&quot;background-color: initial;&quot;&gt;Technology: &lt;/b&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;React&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b&gt;Responsibilities:&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;ul&gt;&lt;li&gt;Allow participants to register (if required)&amp;nbsp; &amp;nbsp;&lt;/li&gt;&lt;li&gt;Present question prompts&lt;/li&gt;&lt;li&gt;Submit responses&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#82b366;fillColor=#d5e8d4;container=0;" vertex="1" parent="VveSuCs8Nsfqt1c0xHVb-16">
+        <mxCell id="VveSuCs8Nsfqt1c0xHVb-17" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b style=&quot;background-color: initial;&quot;&gt;Technology: &lt;/b&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;React&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b&gt;Responsibilities:&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;ul&gt;&lt;li&gt;Allow participants to register (if required)&amp;nbsp; &amp;nbsp;&lt;/li&gt;&lt;li&gt;Present question prompts&lt;/li&gt;&lt;li&gt;Submit responses&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#82b366;fillColor=#d5e8d4;container=0;" parent="VveSuCs8Nsfqt1c0xHVb-16" vertex="1">
           <mxGeometry y="22" width="290" height="140" as="geometry" />
         </mxCell>
-        <mxCell id="VveSuCs8Nsfqt1c0xHVb-18" value="API layer" style="swimlane;startSize=23;fillColor=#ffe6cc;strokeColor=#d79b00;container=0;" vertex="1" parent="1">
-          <mxGeometry x="890" y="580" width="260" height="143" as="geometry" />
+        <mxCell id="VveSuCs8Nsfqt1c0xHVb-18" value="API layer" style="swimlane;startSize=23;fillColor=#ffe6cc;strokeColor=#d79b00;container=0;" parent="1" vertex="1">
+          <mxGeometry x="890" y="634.5" width="260" height="143" as="geometry" />
         </mxCell>
-        <mxCell id="VveSuCs8Nsfqt1c0xHVb-19" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b style=&quot;background-color: initial;&quot;&gt;Technology: &lt;/b&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Django REST framework&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b style=&quot;background-color: initial;&quot;&gt;Responsibilities:&lt;/b&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;ul&gt;&lt;li&gt;Process API requests from the SPA&lt;/li&gt;&lt;li&gt;Interact with database as required&amp;nbsp;&lt;br&gt;based on API requests&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#82b366;fillColor=#d5e8d4;container=0;" vertex="1" parent="VveSuCs8Nsfqt1c0xHVb-18">
+        <mxCell id="VveSuCs8Nsfqt1c0xHVb-19" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b style=&quot;background-color: initial;&quot;&gt;Technology: &lt;/b&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Django REST framework&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b style=&quot;background-color: initial;&quot;&gt;Responsibilities:&lt;/b&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;ul&gt;&lt;li&gt;Process API requests from the SPA&lt;/li&gt;&lt;li&gt;Interact with database as required&amp;nbsp;&lt;br&gt;based on API requests&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#82b366;fillColor=#d5e8d4;container=0;" parent="VveSuCs8Nsfqt1c0xHVb-18" vertex="1">
           <mxGeometry x="5" y="23" width="250" height="120" as="geometry" />
         </mxCell>
         <object placeholders="1" c4Name="Organization systems" c4Type="Software systems, databases" c4Description="Internal systems e.g. user databases, event management" label="&lt;font style=&quot;font-size: 16px&quot;&gt;&lt;b&gt;%c4Name%&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[%c4Type%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;&lt;font color=&quot;#cccccc&quot;&gt;%c4Description%&lt;/font&gt;&lt;/div&gt;" id="6MHDGr1IVYE9pwsXuLm0-55">
@@ -71,147 +71,147 @@
             <mxGeometry x="890" y="140" width="240" height="120" as="geometry" />
           </mxCell>
         </object>
-        <mxCell id="VveSuCs8Nsfqt1c0xHVb-22" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.926;exitY=0.99;exitDx=0;exitDy=0;exitPerimeter=0;entryX=-0.006;entryY=0.107;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="VveSuCs8Nsfqt1c0xHVb-8" target="VveSuCs8Nsfqt1c0xHVb-19">
+        <mxCell id="VveSuCs8Nsfqt1c0xHVb-22" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.926;exitY=0.99;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="VveSuCs8Nsfqt1c0xHVb-8" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="630" y="660" as="sourcePoint" />
-            <mxPoint x="680" y="610" as="targetPoint" />
+            <mxPoint x="890" y="646" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="VveSuCs8Nsfqt1c0xHVb-23" value="Makes requests (e.g.&lt;div&gt;fetching data, submitting forms)&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="VveSuCs8Nsfqt1c0xHVb-22">
+        <mxCell id="VveSuCs8Nsfqt1c0xHVb-23" value="Makes requests (e.g.&lt;div&gt;fetching data, submitting forms)&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="VveSuCs8Nsfqt1c0xHVb-22" vertex="1" connectable="0">
           <mxGeometry x="0.0517" y="-2" relative="1" as="geometry">
             <mxPoint x="-11" y="-7" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="VveSuCs8Nsfqt1c0xHVb-24" value="" style="endArrow=none;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="VveSuCs8Nsfqt1c0xHVb-18">
+        <mxCell id="VveSuCs8Nsfqt1c0xHVb-24" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" edge="1" target="VveSuCs8Nsfqt1c0xHVb-4">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="970" y="564" as="sourcePoint" />
-            <mxPoint x="1020" y="514" as="targetPoint" />
+            <mxPoint x="1025" y="630" as="sourcePoint" />
+            <mxPoint x="1020" y="590" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="VveSuCs8Nsfqt1c0xHVb-26" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="6MHDGr1IVYE9pwsXuLm0-29">
+        <mxCell id="VveSuCs8Nsfqt1c0xHVb-26" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="6MHDGr1IVYE9pwsXuLm0-29" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="630" y="660" as="sourcePoint" />
-            <mxPoint x="890" y="710" as="targetPoint" />
+            <mxPoint x="890" y="760" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="VveSuCs8Nsfqt1c0xHVb-27" value="Interacts based on&amp;nbsp;&lt;div&gt;API requests from SPA&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="VveSuCs8Nsfqt1c0xHVb-26">
+        <mxCell id="VveSuCs8Nsfqt1c0xHVb-27" value="Interacts based on&amp;nbsp;&lt;div&gt;API requests from SPA&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="VveSuCs8Nsfqt1c0xHVb-26" vertex="1" connectable="0">
           <mxGeometry x="-0.0131" y="-2" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="VveSuCs8Nsfqt1c0xHVb-28" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0.189;entryY=1.019;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="6MHDGr1IVYE9pwsXuLm0-28">
+        <mxCell id="VveSuCs8Nsfqt1c0xHVb-28" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0.189;entryY=1.019;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="6MHDGr1IVYE9pwsXuLm0-28" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="650" y="360" as="sourcePoint" />
             <mxPoint x="630" y="280" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="VveSuCs8Nsfqt1c0xHVb-29" value="Manages org&#39;s info, runs searches&amp;nbsp;&lt;div&gt;and reports using&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="VveSuCs8Nsfqt1c0xHVb-28">
+        <mxCell id="VveSuCs8Nsfqt1c0xHVb-29" value="Manages org&#39;s info, runs searches&amp;nbsp;&lt;div&gt;and reports using&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="VveSuCs8Nsfqt1c0xHVb-28" vertex="1" connectable="0">
           <mxGeometry x="-0.0133" y="4" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="VveSuCs8Nsfqt1c0xHVb-34" value="Mobile App (Progressive Web App) backend" style="swimlane;startSize=23;fillColor=#1ba1e2;strokeColor=#006EAF;container=0;fontColor=#ffffff;" vertex="1" parent="1">
-          <mxGeometry x="40" y="600" width="270" height="150" as="geometry" />
+        <mxCell id="VveSuCs8Nsfqt1c0xHVb-34" value="Mobile App (Progressive Web App) backend" style="swimlane;startSize=23;fillColor=#1ba1e2;strokeColor=#006EAF;container=0;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="40" y="600" width="270" height="212" as="geometry" />
         </mxCell>
-        <mxCell id="VveSuCs8Nsfqt1c0xHVb-35" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b style=&quot;background-color: initial;&quot;&gt;Technology: &lt;/b&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Ruby on Rails&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b&gt;Responsibilities:&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;ul&gt;&lt;li&gt;Serve the user interface to participants&lt;/li&gt;&lt;li&gt;Interact with database vie API layer&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#82b366;fillColor=#d5e8d4;container=0;" vertex="1" parent="VveSuCs8Nsfqt1c0xHVb-34">
-          <mxGeometry y="23" width="270" height="120" as="geometry" />
+        <mxCell id="VveSuCs8Nsfqt1c0xHVb-35" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b style=&quot;background-color: initial;&quot;&gt;Technology: &lt;/b&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Ruby on Rails&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b&gt;Responsibilities:&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;ul&gt;&lt;li&gt;Serve the user interface to participants&lt;/li&gt;&lt;li&gt;Interact with database vie API layer&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;b&gt;Models:&amp;nbsp;&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;ul&gt;&lt;li&gt;Attendees (Facilitators, Participants,&lt;br&gt;EventParticipants)&lt;/li&gt;&lt;li&gt;Responses&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=1;points=[];autosize=1;strokeColor=#82b366;fillColor=#d5e8d4;container=0;movable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="VveSuCs8Nsfqt1c0xHVb-34" vertex="1">
+          <mxGeometry y="22" width="270" height="190" as="geometry" />
         </mxCell>
-        <mxCell id="VveSuCs8Nsfqt1c0xHVb-36" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.25;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.094;entryY=-0.008;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="6MHDGr1IVYE9pwsXuLm0-26" target="VveSuCs8Nsfqt1c0xHVb-34">
+        <mxCell id="VveSuCs8Nsfqt1c0xHVb-36" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.25;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.094;entryY=-0.008;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="6MHDGr1IVYE9pwsXuLm0-26" target="VveSuCs8Nsfqt1c0xHVb-34" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="350" y="510" as="sourcePoint" />
             <mxPoint x="400" y="460" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="VveSuCs8Nsfqt1c0xHVb-37" value="Scans QR code&lt;div&gt;to access&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="VveSuCs8Nsfqt1c0xHVb-36">
+        <mxCell id="VveSuCs8Nsfqt1c0xHVb-37" value="Scans QR code&lt;div&gt;to access&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="VveSuCs8Nsfqt1c0xHVb-36" vertex="1" connectable="0">
           <mxGeometry x="0.0394" y="-2" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="VveSuCs8Nsfqt1c0xHVb-38" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.541;exitY=-0.004;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="VveSuCs8Nsfqt1c0xHVb-34">
+        <mxCell id="VveSuCs8Nsfqt1c0xHVb-38" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.541;exitY=-0.004;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="VveSuCs8Nsfqt1c0xHVb-34" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="370" y="510" as="sourcePoint" />
             <mxPoint x="280" y="520" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="VveSuCs8Nsfqt1c0xHVb-39" value="Delivers to user&#39;s mobile web browser/&lt;div&gt;home screen (offline access)&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="VveSuCs8Nsfqt1c0xHVb-38">
+        <mxCell id="VveSuCs8Nsfqt1c0xHVb-39" value="Delivers to user&#39;s mobile web browser/&lt;div&gt;home screen (offline access)&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="VveSuCs8Nsfqt1c0xHVb-38" vertex="1" connectable="0">
           <mxGeometry x="-0.0143" y="2" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="VveSuCs8Nsfqt1c0xHVb-40" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0.685;entryY=0.984;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="6MHDGr1IVYE9pwsXuLm0-26">
+        <mxCell id="VveSuCs8Nsfqt1c0xHVb-40" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0.685;entryY=0.984;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="6MHDGr1IVYE9pwsXuLm0-26" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="300" y="355" as="sourcePoint" />
             <mxPoint x="420" y="460" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="VveSuCs8Nsfqt1c0xHVb-41" value="Registers (if required),&amp;nbsp;&lt;div&gt;receives question prompts,&lt;/div&gt;&lt;div&gt;submits responses&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="VveSuCs8Nsfqt1c0xHVb-40">
+        <mxCell id="VveSuCs8Nsfqt1c0xHVb-41" value="Registers (if required),&amp;nbsp;&lt;div&gt;receives question prompts,&lt;/div&gt;&lt;div&gt;submits responses&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="VveSuCs8Nsfqt1c0xHVb-40" vertex="1" connectable="0">
           <mxGeometry x="-0.0779" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="VveSuCs8Nsfqt1c0xHVb-42" value="API layer" style="swimlane;startSize=23;fillColor=#ffe6cc;strokeColor=#d79b00;container=0;" vertex="1" parent="1">
+        <mxCell id="VveSuCs8Nsfqt1c0xHVb-42" value="API layer" style="swimlane;startSize=23;fillColor=#ffe6cc;strokeColor=#d79b00;container=0;" parent="1" vertex="1">
           <mxGeometry x="140" y="850" width="300" height="160" as="geometry" />
         </mxCell>
-        <mxCell id="VveSuCs8Nsfqt1c0xHVb-43" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b style=&quot;background-color: initial;&quot;&gt;Technology: &lt;/b&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Axios with React Query&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b&gt;Responsibilities:&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Process API requests from the user interface&amp;nbsp;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Interact with database as required based on&lt;br&gt;&lt;/span&gt;API requests&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#82b366;fillColor=#d5e8d4;container=0;" vertex="1" parent="VveSuCs8Nsfqt1c0xHVb-42">
+        <mxCell id="VveSuCs8Nsfqt1c0xHVb-43" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b style=&quot;background-color: initial;&quot;&gt;Technology: &lt;/b&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Axios with React Query&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b&gt;Responsibilities:&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Process API requests from the user interface&amp;nbsp;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Interact with database as required based on&lt;br&gt;&lt;/span&gt;API requests&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#82b366;fillColor=#d5e8d4;container=0;" parent="VveSuCs8Nsfqt1c0xHVb-42" vertex="1">
           <mxGeometry y="20" width="300" height="140" as="geometry" />
         </mxCell>
-        <mxCell id="VveSuCs8Nsfqt1c0xHVb-44" value="" style="endArrow=none;html=1;rounded=0;entryX=0.527;entryY=0.99;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="VveSuCs8Nsfqt1c0xHVb-42" target="VveSuCs8Nsfqt1c0xHVb-35">
+        <mxCell id="VveSuCs8Nsfqt1c0xHVb-44" value="" style="endArrow=none;html=1;rounded=0;entryX=0.527;entryY=0.99;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="VveSuCs8Nsfqt1c0xHVb-42" target="VveSuCs8Nsfqt1c0xHVb-35" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="212" y="789" as="sourcePoint" />
             <mxPoint x="610" y="670" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="VveSuCs8Nsfqt1c0xHVb-45" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+        <mxCell id="VveSuCs8Nsfqt1c0xHVb-45" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="890" y="680" as="sourcePoint" />
+            <mxPoint x="890" y="720" as="sourcePoint" />
             <mxPoint x="620" y="530" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="VveSuCs8Nsfqt1c0xHVb-46" value="Sends requested data to be&lt;div&gt;dynamically displayed in SPA&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="VveSuCs8Nsfqt1c0xHVb-45">
+        <mxCell id="VveSuCs8Nsfqt1c0xHVb-46" value="Sends requested data to be&lt;div&gt;dynamically displayed in SPA&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="VveSuCs8Nsfqt1c0xHVb-45" vertex="1" connectable="0">
           <mxGeometry x="-0.0087" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="VveSuCs8Nsfqt1c0xHVb-47" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.52;exitY=1.004;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.689;entryY=0.009;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="VveSuCs8Nsfqt1c0xHVb-17" target="VveSuCs8Nsfqt1c0xHVb-42">
+        <mxCell id="VveSuCs8Nsfqt1c0xHVb-47" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.52;exitY=1.004;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.689;entryY=0.009;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="VveSuCs8Nsfqt1c0xHVb-17" target="VveSuCs8Nsfqt1c0xHVb-42" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="370" y="530" as="sourcePoint" />
             <mxPoint x="340" y="780" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="VveSuCs8Nsfqt1c0xHVb-48" value="Makes requests&amp;nbsp;&lt;div&gt;(e.g. fetching&amp;nbsp;&lt;/div&gt;&lt;div&gt;questions,&lt;/div&gt;&lt;div&gt;submitting&amp;nbsp;&lt;/div&gt;&lt;div&gt;responses)&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="VveSuCs8Nsfqt1c0xHVb-47">
+        <mxCell id="VveSuCs8Nsfqt1c0xHVb-48" value="Makes requests&amp;nbsp;&lt;div&gt;(e.g. fetching&amp;nbsp;&lt;/div&gt;&lt;div&gt;questions,&lt;/div&gt;&lt;div&gt;submitting&amp;nbsp;&lt;/div&gt;&lt;div&gt;responses)&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="VveSuCs8Nsfqt1c0xHVb-47" vertex="1" connectable="0">
           <mxGeometry x="-0.032" y="-4" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="VveSuCs8Nsfqt1c0xHVb-49" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.7;entryDx=0;entryDy=0;" edge="1" parent="1" source="VveSuCs8Nsfqt1c0xHVb-42" target="6MHDGr1IVYE9pwsXuLm0-29">
+        <mxCell id="VveSuCs8Nsfqt1c0xHVb-49" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.7;entryDx=0;entryDy=0;" parent="1" source="VveSuCs8Nsfqt1c0xHVb-42" target="6MHDGr1IVYE9pwsXuLm0-29" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="490" y="700" as="sourcePoint" />
             <mxPoint x="540" y="650" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="VveSuCs8Nsfqt1c0xHVb-50" value="Interacts based on&amp;nbsp;&lt;div&gt;API requests from&amp;nbsp;&lt;/div&gt;&lt;div&gt;PWA user interface&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="VveSuCs8Nsfqt1c0xHVb-49">
+        <mxCell id="VveSuCs8Nsfqt1c0xHVb-50" value="Interacts based on&amp;nbsp;&lt;div&gt;API requests from&amp;nbsp;&lt;/div&gt;&lt;div&gt;PWA user interface&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="VveSuCs8Nsfqt1c0xHVb-49" vertex="1" connectable="0">
           <mxGeometry x="-0.0142" y="-4" relative="1" as="geometry">
             <mxPoint x="1" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="VveSuCs8Nsfqt1c0xHVb-51" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.935;exitY=0.009;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="VveSuCs8Nsfqt1c0xHVb-42">
+        <mxCell id="VveSuCs8Nsfqt1c0xHVb-51" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.935;exitY=0.009;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="VveSuCs8Nsfqt1c0xHVb-42" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="490" y="700" as="sourcePoint" />
             <mxPoint x="490" y="520" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="VveSuCs8Nsfqt1c0xHVb-52" value="Sends requested data&lt;div&gt;to be dynamically&amp;nbsp;&lt;/div&gt;&lt;div&gt;displayed in the&lt;/div&gt;&lt;div&gt;user interface&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="VveSuCs8Nsfqt1c0xHVb-51">
+        <mxCell id="VveSuCs8Nsfqt1c0xHVb-52" value="Sends requested data&lt;div&gt;to be dynamically&amp;nbsp;&lt;/div&gt;&lt;div&gt;displayed in the&lt;/div&gt;&lt;div&gt;user interface&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="VveSuCs8Nsfqt1c0xHVb-51" vertex="1" connectable="0">
           <mxGeometry x="-0.015" y="-3" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="VveSuCs8Nsfqt1c0xHVb-53" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;exitX=1.006;exitY=0.67;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="6MHDGr1IVYE9pwsXuLm0-28" target="6MHDGr1IVYE9pwsXuLm0-55">
+        <mxCell id="VveSuCs8Nsfqt1c0xHVb-53" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;exitX=1.006;exitY=0.67;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="6MHDGr1IVYE9pwsXuLm0-28" target="6MHDGr1IVYE9pwsXuLm0-55" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="790" y="230" as="sourcePoint" />
             <mxPoint x="840" y="180" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="VveSuCs8Nsfqt1c0xHVb-54" value="Interacts&amp;nbsp;&lt;div&gt;with&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="VveSuCs8Nsfqt1c0xHVb-53">
+        <mxCell id="VveSuCs8Nsfqt1c0xHVb-54" value="Interacts&amp;nbsp;&lt;div&gt;with&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="VveSuCs8Nsfqt1c0xHVb-53" vertex="1" connectable="0">
           <mxGeometry x="-0.0991" y="1" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>

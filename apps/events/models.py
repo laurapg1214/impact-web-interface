@@ -10,9 +10,16 @@ class Event(BaseModel):
     date = models.DateField()
     time = models.TimeField(blank=True, null=True)
     location = models.CharField(max_length=50, blank=True)
-    # manytomany rels placed in Event to manage data primarily from perspective of events
-    organizations = models.ManyToManyField(Organization, related_name="events", blank=True)
-    questions = models.ManyToManyField(Question, related_name="events", blank=True)
+    organizations = models.ManyToManyField(
+        Organization, 
+        related_name="events" 
+    )
+    questions = models.ManyToManyField(
+        Question, 
+        null=True,
+        blank=True,
+        related_name="events" 
+    )
 
     class Meta:
         verbose_name = "Event"

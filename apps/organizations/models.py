@@ -1,7 +1,8 @@
+from apps.attendees import Facilitator, CustomAttendeeType
 from apps.common.models import BaseModel
 from django.db import models
 
-
+# foreignkey relationships held in events, coordinators and attendees
 class Organization(BaseModel):
     name = models.CharField(max_length=100)
     location = models.CharField(max_length=100, blank=True, null=True)

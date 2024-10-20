@@ -20,7 +20,6 @@ pymysql.install_as_MySQLdb()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
@@ -45,6 +44,7 @@ INSTALLED_APPS = [
     'apps.organizations.apps.OrganizationsConfig',
     'apps.questions.apps.QuestionsConfig',
     'apps.reports.apps.ReportsConfig',
+    'apps.responses.apps.ResponsesConfig',
 
     # allow react frontend to make requests to django by configuring cors headers
     'corsheaders',

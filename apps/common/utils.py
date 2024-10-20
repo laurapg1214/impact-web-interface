@@ -1,11 +1,10 @@
 from apps.events.models import Event
-from apps.attendees.models import Facilitator, Participant, EventAttendee
+from apps.attendees.models import Facilitator, Participant, CustomAttendeeType, EventAttendee
 from apps.questions.models import Question
 from django.apps import apps
 from django.shortcuts import render
 from rest_framework import serializers, viewsets
 import uuid
-
 
 # encapsulated views.py functionality with exception rendering custom error page
 def get_object_or_error(
@@ -40,8 +39,8 @@ MODELS_LIST = [
     # app_label, model_name
     ('attendees', 'Facilitator'),
     ('attendees', 'Participant'),
-    #('attendees', 'Demographics'),
-    #('attendees', 'CustomDemographicField'),
+    ('attendees', 'CustomAttendeeType'),
+    ('attendees', 'EventAttendee'),
     #('attendees', 'CustomDemographicValue'),
     ('organizations', 'Organization'),
     ('coordinators', 'Coordinator'),
@@ -87,30 +86,74 @@ def use_custom_viewset(model_name, serializers_dict):
 
 # dynamically add attendees during live event
 def event_attendee_create_serializer(): 
+
     class EventAttendeeSerializer(serializers.ModelSerializer):
+
         class Meta:
-            model = Event
-            fields = ['facilitators', 'participants']
-    
+            model = EventAttendee
+            fields = [
+                'event', 
+                'organization', 
+                'attendee_type', 
+                'participant', 
+                'facilitator', 
+                'custom_attendee_type'
+            ]
+                      
+        # allow coordinators to specify a custom_attendee_type when creating/updating attendees.
+        # if the custom_attendee_type does not exist, create it
+        custom_attendee_type = serializers.CharField(required=False)
+
+        def create(self, validated_data):
+            # validate organization exists in event
+            event = validated_data['event']
+            custom_attendee_type_name = validated_data.pop('custom_attendee_type', None)
+
+            # check if custom attendee type was provided
+            if custom_attendee_type_name:
+                custom_attendee_type, created = CustomAttendeeType.objects.get_or_create(
+                    type_name=custom_attendee_type_name,
+                    # check if custom attendee type exists within event organization(s)
+                    organization=validated_data['event'].organization
+                )
+                validated_data['custom_attendee_type'] = custom_attendee_type
+            
+            # call superclass create method to save EventAttendee
+            return super().create(validated_data)
 
         def update(self, instance, validated_data):
-            facilitators_data = validated_data.pop('facilitators', [])
-            participants_data = validated_data.pop('participants', [])
+            attendees_data = validated_data.pop('attendees', [])
 
-            # extract attendee model and type to avoid code duplication
-            if facilitators_data:
-                model = Participant
-                attendees_data = participants_data
-            else:
-                model = Facilitator
-                attendees_data = facilitators_data
-
-            # create lists for both existing and new facilitators & participants, 
+            # create lists for both existing and new attendees, 
             # for bulk adding to minimize db hits
             attendees_to_create = []
             attendees_to_add = []
 
             for attendee_data in attendees_data:
+
+                # extract attendee type model to avoid code duplication
+                attendee_type = attendee_data.get('attendee_type')
+                if attendee_type == 'participant':
+                    model = Participant
+                elif attendee_type == 'facilitator':
+                    model = Facilitator
+                else:
+                    custom_attendee_type, _ = CustomAttendeeType.objects.get_or_create(
+                        type_name=attendee_type,
+                        organization=instance.organization
+                    )
+                    # create an EventAttendee with this custom type
+                    attendees_to_create.append(EventAttendee(
+                        event=instance,
+                        custom_attendee_type=custom_attendee_type,
+                        unique_id=attendee_data.get('unique_id') or str(uuid.uuid4()),
+                        first_name=attendee_data.get('first_name', ''),
+                        last_name=attendee_data.get('last_name', ''),
+                    ))
+                    # skip to next attendee data
+                    continue 
+                    
+                # for participant/facilitator, 
                 # automatically assign a unique identifier if not provided
                 unique_id = attendee_data.get('unique_id') or str(uuid.uuid4())
                 
@@ -142,8 +185,16 @@ def event_attendee_create_serializer():
 
 def event_create_serializer(serializers_dict):
     class EventSerializer(serializers.ModelSerializer):
-        attendees = serializers_dict.get(('attendees', 'EventAttendee'))(many=True)
-        questions = serializers_dict.get(('questions', 'Question'))(many=True)
+
+        # get the EventAttendee serializer for attendees 
+        attendees = serializers_dict.get(
+            ('attendees', 'EventAttendee')
+        )(many=True)
+
+        # get the EventAttendee serializer for questions
+        questions = serializers_dict.get(
+            ('questions', 'Question')
+        )(many=True)
 
         class Meta:
             model = Event
@@ -163,14 +214,38 @@ def event_create_serializer(serializers_dict):
 
             # add attendees to the event
             for attendee_data in attendees_data:
-                # distinguish between participant and facilitator
                 attendee_type = attendee_data.get('attendee_type')
-                if attendee_type == 'participant':
-                    attendee, created = Participant.objects.get_or_create(id=attendee_data['id']) 
-                else:
-                    attendee, created = Facilitator.objects.get_or_create(id=attendee_data['id'])
 
-                event.attendees.add(attendee) 
+                # map attendees to models for condensed code
+                attendee_model_mapping = {
+                    'participant': Participant,
+                    'facilitator': Facilitator
+                }
+
+                # check for attendee type from standard models
+                if attendee_type in attendee_model_mapping:    
+                    attendee_model = attendee_model_mapping[attendee_type]
+                    attendee, created = attendee_model.objects.get_or_create(id=attendee_data['id'])
+                    attendees_to_add.append(EventAttendee(
+                        event=event,
+                        attendee_type=attendee_type
+                        **{attendee_type: attendee} # dynamic field assignment **unpacking dict
+                    )) 
+
+                # check for custom attendee type
+                elif (custom_type_name := attendee_data.get('custom_attendee_type')):
+                    # check if custom type already exists for organization
+                    organization = event.organization
+                    custom_attendee_type, created = CustomAttendeeType.objects.get_or_create(
+                        organization=organization, 
+                        name=custom_type_name
+                    )
+                    # assign custom type to attendee_type
+                    attendee_type = custom_attendee_type
+
+            # bulk add attendees to event to minimise db hits
+            if attendees_to_add:
+                EventAttendee.objects.bulk_create(attendees_to_add)
 
             # add questions to the event
             for question_data in questions_data:
@@ -181,12 +256,9 @@ def event_create_serializer(serializers_dict):
                 else: 
                     question = Question.objects.create(**question_data)
                     
-                event.questions.add(question) 
+                questions_to_add.append(question) 
 
-            # bulk add attendees & questions to the event to minimize db hits
-            if attendees_to_add:
-                event.attendees.add(*attendees_to_add)
-
+            # bulk add questions to event to minimise db hits
             if questions_to_add:
                 event.questions.add(*questions_to_add)
             

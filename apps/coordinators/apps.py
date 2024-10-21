@@ -1,6 +1,6 @@
-from django.apps import AppConfig
+from apps.common.apps import BaseModelConfig
 
 
-class CoordinatorsConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'apps.coordinators'
+class CoordinatorsConfig(BaseModelConfig):
+    name = "apps.coordinators"
+    verbose_name = "Coordinators"

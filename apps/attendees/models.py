@@ -1,13 +1,12 @@
 from apps.common.models import BaseModel, AttendeeInfoModel
+from apps.common.utils import get_default_event
 from apps.organizations.models import Organization
 from django.core.exceptions import ValidationError
 from django.db import models
 import uuid
 
-### CONTAINS Participant, Facilitator, CustomAttendeeType, EventAttendee ###
-# Facilitators can belong to only one organization
-# Participants & CustomAttendeeTypes can belong to more than one organization
 
+### CONTAINS Participant, Facilitator, CustomAttendeeType, EventAttendee ###
 class Participant(BaseModel, AttendeeInfoModel):
     emoji = models.CharField(max_length=10, null=True, blank=True)
     organization = models.ForeignKey(
@@ -22,12 +21,12 @@ class Participant(BaseModel, AttendeeInfoModel):
             self.unique_id = str(uuid.uuid4())
         super().save(*args, **kwargs)
 
+    def __str__(self):
+        return f"{self.unique_id} {self.first_name} {self.last_name} - Participant"
+
     class Meta:
         verbose_name = "Participant"
         verbose_name_plural = "Participants"
-
-    def __str__(self):
-        return f"{self.unique_id} {self.first_name} {self.last_name} - Participant"
 
 
 class Facilitator(BaseModel, AttendeeInfoModel):
@@ -37,50 +36,65 @@ class Facilitator(BaseModel, AttendeeInfoModel):
         related_name="facilitators"
     )
     organization_role = models.CharField(max_length=100, blank=True)
-
-    class Meta:
-        verbose_name = "Facilitator"
-        verbose_name_plural = "Facilitators"
     
     def __str__(self):
         return (
             f"{self.first_name} {self.last_name} - "
             "Facilitator for {self.organization.name}"
         )
+    
+    class Meta:
+        verbose_name = "Facilitator"
+        verbose_name_plural = "Facilitators"
 
 
 # allow coordinators to create custom attendees for one-off events or longterm use
 class CustomAttendeeType(BaseModel, AttendeeInfoModel):
-    type_name = models.Charfield(max_length=50, unique=True)
-
-    class Meta:
-        verbose_name = "Custom Attendee Type"
-        verbose_name_plural = "Custom Attendee Types"
+    type_name = models.CharField(max_length=50, unique=True)
+    organization = models.ForeignKey(
+        Organization,
+        on_delete=models.CASCADE,
+        related_name="custom_attendee_types"
+    )
+    organization_role = models.CharField(max_length=100, blank=True)
 
     def __str__(self):
         return self.type_name
+    
+    class Meta:
+        verbose_name = "Custom Attendee Type"
+        verbose_name_plural = "Custom Attendee Types"
 
 
 class EventAttendee(BaseModel):
     
     EVENT_ATTENDEE_TYPES = [
-        ('facilitator', 'Facilitator'),
-        ('participant', 'Participant'),
-        ('other', 'Other'),
+        ("participant", "Participant"),
+        ("facilitator", "Facilitator"),
+        ("other", "Other"), # custom types
     ]
 
     ### VALIDATION CHECK ###
 
     # validation check that facilitator's organization in event's organization(s)
     def clean(self):
-        if (
-            self.facilitator 
-            and self.facilitator.organization 
-            not in self.event.organizations.all()
-        ):
-            raise ValidationError(
-                "Facilitator does not belong to any of the organizations running the event"
-            )
+        # map attendee types to their specific instances
+        attendee_map = {
+            "participant": self.participant,
+            "facilitator": self.facilitator,
+            "other": self.custom_attendee_type,
+        }
+
+        # get current attendee instance based on type
+        attendee_instance = attendee_map.get(self.attendee_type)
+
+        # conditional validation check if attendee instance exists
+        if attendee_instance is not None:
+            if attendee_instance.organization not in self.event.organizations.all():
+                raise ValidationError(
+                    f"{self.attendee_type.capitalize()} does not belong to any "
+                    "of the organizations running the event"
+                )
     
     # run validation on save
     def save(self, *args, **kwargs):
@@ -91,35 +105,35 @@ class EventAttendee(BaseModel):
 
     # PROTECT below for to maintain all events that were run and their attendees
     event = models.ForeignKey(
-        # importing via string 'events.Event' 
-        # to avoid circular import with events/models.py
-        'events.Event', 
+        # importing via string to avoid circular import
+        "events.Event", 
         on_delete=models.PROTECT, 
-        related_name="attendees"
+        default=get_default_event,
+        related_name="event_attendees"
     )
     # allows multiple orgs running an event to all have access to EventAttendees
     organizations = models.ManyToManyField(
         Organization,
-        related_name = 'event_attendees'
+        related_name = "event_attendees"
     )
     attendee_type = models.CharField(
         max_length=20, 
         choices=EVENT_ATTENDEE_TYPES,
-        default='participant'
+        default="participant"
     )
     participant = models.ForeignKey(
         Participant, 
         null=True,
         blank=True, 
         on_delete=models.PROTECT, 
-        related_name="event_participants",
+        related_name="event_attendees",
     )
     facilitator = models.ForeignKey(
         Facilitator, 
         null=True,
         blank=True, 
         on_delete=models.PROTECT,  
-        related_name="event_facilitators",
+        related_name="event_attendees",
     )
     custom_attendee_type = models.ForeignKey(
         CustomAttendeeType,
@@ -132,26 +146,26 @@ class EventAttendee(BaseModel):
     attendance_status = models.CharField(
         max_length=20, 
         choices=[
-            ('attended', 'Attended'), 
-            ('absent', 'Absent')
+            ("attended", "Attended"), 
+            ("absent", "Absent")
         ], 
-        default='attended'
+        default="attended"
     )
+
+    def __str__(self):
+        attendee = self.participant or self.facilitator or self.custom_attendee_type
+        return f"{self.attendee_type.capitalize()}: {attendee} at {self.event}"
 
     class Meta:
         # avoid duplicate registrations: 
         # ensure each attendee assigned to specific event only once
         unique_together = (
-            ('event', 'participant'),
-            ('event', 'facilitator'),
-            ('event', 'custom_attendee_type', 'participant')
-            ('event', 'custom_attendee_type', 'facilitator'),
+            ("event", "participant"),
+            ("event", "facilitator"),
+            ("event", "custom_attendee_type", "participant"),
+            ("event", "custom_attendee_type", "facilitator"),
         )
         verbose_name = "Event Attendee"
         verbose_name_plural = "Event Attendees"
-
-    def __str__(self):
-        attendee = self.participant or self.facilitator or self.custom_attendee_type
-        return f"{self.attendee_type.capitalize()}: {attendee} at {self.event}"
         
     

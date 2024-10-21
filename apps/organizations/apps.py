@@ -1,6 +1,6 @@
-from django.apps import AppConfig
+from apps.common.apps import BaseModelConfig
 
 
-class OrganizationsConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'apps.organizations'
+class OrganizationsConfig(BaseModelConfig):
+    name = "apps.organizations"
+    verbose_name = "Organizations"

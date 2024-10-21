@@ -1,6 +1,6 @@
-from django.apps import AppConfig
+from apps.common.apps import BaseModelConfig
 
 
-class AuthenticationConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'apps.authentication'
+class AuthenticationConfig(BaseModelConfig):
+    name = "apps.authentication"
+    verbose_name = "Authentication"

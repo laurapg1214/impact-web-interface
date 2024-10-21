@@ -1,6 +1,6 @@
-from django.apps import AppConfig
+from apps.common.apps import BaseModelConfig
 
 
-class ResponsesConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'responses'
+class ResponsesConfig(BaseModelConfig):   
+    name = "apps.responses"
+    verbose_name = "Responses"

@@ -2,7 +2,7 @@ from apps.common.models import BaseModel
 from apps.organizations.models import Organization
 from apps.questions.models import Question
 from django.db import models
-  
+
 
 class Event(BaseModel):
     name = models.CharField(max_length=100)
@@ -16,17 +16,16 @@ class Event(BaseModel):
     )
     questions = models.ManyToManyField(
         Question, 
-        null=True,
         blank=True,
         related_name="events" 
     )
-
-    class Meta:
-        verbose_name = "Event"
-        verbose_name_plural = "Events"
     
     def __str__(self):
         return f"{self.name}, {self.date}" 
+    
+    class Meta:
+        verbose_name = "Event"
+        verbose_name_plural = "Events"
     
 
 

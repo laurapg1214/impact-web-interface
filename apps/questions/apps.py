@@ -1,6 +1,6 @@
-from django.apps import AppConfig
+from apps.common.apps import BaseModelConfig
 
 
-class QuestionsConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'apps.questions'
+class QuestionsConfig(BaseModelConfig):
+    name = "apps.questions"
+    verbose_name = "Questions"

@@ -14,14 +14,14 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import include, path
+
+from apps.events.views import index
 from django.conf import settings
 #from django.conf.urls import handler404
 from django.conf.urls.static import static
+from django.contrib import admin
+from django.urls import include, path
 from rest_framework import routers
-from apps.common.utils import viewsets_dict
-from apps.events.views import index
 #from .views import custom_404_view
 
 app_name = "obwob"
@@ -32,8 +32,16 @@ app_name = "obwob"
 router = routers.DefaultRouter()
 
 # register each viewset dynamically with the router using custom utils functionality
-for model_name, viewset_class in viewsets_dict.items():
-    router.register(model_name.lower(), viewset_class, basename=model_name.lower())
+# lazy loading serializers & viewsets until explicitly needed to avoid import issues
+def register_viewsets():
+    from apps.common.utils import generate_serializers, generate_viewsets
+    serializers_dict = generate_serializers()
+    viewsets_dict = generate_viewsets(serializers_dict)
+
+    for model_name, viewset_class in viewsets_dict.items():
+        router.register(model_name.lower(), viewset_class, basename=model_name.lower())
+
+register_viewsets()
 
 urlpatterns = [
     path("admin/", admin.site.urls),

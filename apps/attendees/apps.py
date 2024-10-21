@@ -1,6 +1,7 @@
-from django.apps import AppConfig
+from apps.common.apps import BaseModelConfig
 
 
-class AttendeesConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'apps.attendees'
+class AttendeesConfig(BaseModelConfig):
+    name = "apps.attendees"
+    verbose_name = "Attendees"
+

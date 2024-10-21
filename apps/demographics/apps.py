@@ -1,6 +1,6 @@
-from django.apps import AppConfig
+from apps.common.apps import BaseModelConfig
 
 
-class DemographicsConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'demographics'
+class DemographicsConfig(BaseModelConfig):
+    name = "apps.demographics"
+    verbose_name = "Demographics"

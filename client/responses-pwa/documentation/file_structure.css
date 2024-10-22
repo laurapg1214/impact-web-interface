@@ -19,11 +19,11 @@ src/
     ├── registration/
     │   ├── QRCodeScanner.js
     │   ├── ParticipantRegistration.js
-    │   └── FacilitatorRegistration.js
+    │   └── FacilitatorRegistration.js /* new */
     ├── questions/
     │    ├── QuestionDisplay.js /* fetches current question from Rails API & displays it */
-    │    ├── QuestionCreateForm.js
-    │    └── QuestionSelectForm.js
+    │    ├── QuestionCreateForm.js /* new */
+    │    └── QuestionSelectForm.js /* new */
     ├── responses/
     │   └── ResponseForm.js
     └── notifications/

@@ -1,0 +1,32 @@
+/* Beta testing v1 */
+src/
+└── features/
+    ├── registration/
+    │   └── QRCodeScanner.js
+    ├── questions/
+    │   ├── QuestionDisplay.js /* fetches current question from backend API & displays it */
+    │   └── ParticipantRegistration.js
+    ├── responses/
+    │   └── ResponseForm.js
+    └── notifications/
+        └── /* TODO populate */
+    
+
+
+/* v2 */
+src/
+└── features/
+    ├── registration/
+    │   ├── QRCodeScanner.js
+    │   ├── ParticipantRegistration.js
+    │   └── FacilitatorRegistration.js
+    ├── questions/
+    │    ├── QuestionDisplay.js /* fetches current question from Rails API & displays it */
+    │    ├── QuestionCreateForm.js
+    │    └── QuestionSelectForm.js
+    ├── responses/
+    │   └── ResponseForm.js
+    └── notifications/
+        └── /* TODO populate */
+
+
